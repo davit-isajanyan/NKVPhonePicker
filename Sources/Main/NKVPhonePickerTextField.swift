@@ -74,6 +74,15 @@ open class NKVPhonePickerTextField: TextFieldPatternFormat {
         }
     }
     
+    public var countriesBackgroundColor: UIColor = .white
+    public var countiesCellBackgroundColor: UIColor = .white
+    public var countriesLabelTextColor: UIColor = .black
+    public var countriesSearchBarTintColor: UIColor = .black
+    public var countriesSearchBarBackgroundColor: UIColor = .white
+    public var countriesSectionIndexTrackingBackgroundColor: UIColor = .clear
+    public var countriesSectionIndexBackgroundColor: UIColor = .clear
+    public var countriesSectionIndexColor: UIColor = .black
+    
     /// - Returns: Current phone number in textField without '+'. Ex: 79997773344.
     public var phoneNumber: String? {
         return self.text?.cutSpaces.cutPluses
@@ -213,6 +222,14 @@ open class NKVPhonePickerTextField: TextFieldPatternFormat {
     @objc public func presentCountriesViewController() {
         if let delegate = phonePickerDelegate {
             let countriesVC = CountriesViewController.standardController()
+            countriesVC.countriesBackgroundColor = self.countriesBackgroundColor
+            countriesVC.countiesCellBackgroundColor = self.countiesCellBackgroundColor
+            countriesVC.countriesLabelTextColor = self.countriesLabelTextColor
+            countriesVC.countriesSearchBarTintColor = self.countriesSearchBarTintColor
+            countriesVC.countriesSearchBarBackgroundColor = self.countriesSearchBarBackgroundColor
+            countriesVC.countriesSectionIndexTrackingBackgroundColor = self.countriesSectionIndexTrackingBackgroundColor
+            countriesVC.countriesSectionIndexBackgroundColor = self.countriesSectionIndexBackgroundColor
+            countriesVC.countriesSectionIndexColor = self.countriesSectionIndexColor
             countriesVC.delegate = self as CountriesViewControllerDelegate
             let navC = UINavigationController.init(rootViewController: countriesVC)
             
