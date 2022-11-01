@@ -121,7 +121,6 @@ public final class CountriesViewController: UITableViewController {
     }
     
     private func setupTableView() {
-        tableView.alwaysBounceVertical = false
         tableView.sectionIndexTrackingBackgroundColor = self.countriesSectionIndexTrackingBackgroundColor
         tableView.sectionIndexBackgroundColor = self.countriesSearchBarBackgroundColor
         tableView.sectionIndexColor = self.countriesSectionIndexColor
