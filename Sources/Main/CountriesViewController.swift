@@ -56,6 +56,7 @@ public final class CountriesViewController: UITableViewController {
     public var countriesSectionIndexTrackingBackgroundColor: UIColor = .clear
     public var countriesSectionIndexBackgroundColor: UIColor = .clear
     public var countriesSectionIndexColor: UIColor = .black
+    public var promptDarkMode = false
     
     // MARK: - Private
     
@@ -67,6 +68,9 @@ public final class CountriesViewController: UITableViewController {
         setupCountries()
         setupSearchController()
         setupTableView()
+        if self.promptDarkMode, #available(iOS 13.0, *) {
+            self.view.overrideUserInterfaceStyle = .dark
+        }
     }
     
     deinit {

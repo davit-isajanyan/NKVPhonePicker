@@ -82,6 +82,7 @@ open class NKVPhonePickerTextField: TextFieldPatternFormat {
     public var countriesSectionIndexTrackingBackgroundColor: UIColor = .clear
     public var countriesSectionIndexBackgroundColor: UIColor = .clear
     public var countriesSectionIndexColor: UIColor = .black
+    public var promptDarkMode = false
     
     /// - Returns: Current phone number in textField without '+'. Ex: 79997773344.
     public var phoneNumber: String? {
@@ -222,6 +223,7 @@ open class NKVPhonePickerTextField: TextFieldPatternFormat {
     @objc public func presentCountriesViewController() {
         if let delegate = phonePickerDelegate {
             let countriesVC = CountriesViewController.standardController()
+            countriesVC.promptDarkMode = self.promptDarkMode
             countriesVC.countriesBackgroundColor = self.countriesBackgroundColor
             countriesVC.countiesCellBackgroundColor = self.countiesCellBackgroundColor
             countriesVC.countriesLabelTextColor = self.countriesLabelTextColor
@@ -233,6 +235,10 @@ open class NKVPhonePickerTextField: TextFieldPatternFormat {
             countriesVC.delegate = self as CountriesViewControllerDelegate
             let navC = UINavigationController.init(rootViewController: countriesVC)
             
+            if self.promptDarkMode, #available(iOS 13.0, *) {
+                navC.view.overrideUserInterfaceStyle = .dark
+            }
+
             customizeCountryPicker(countriesVC)
             delegate.present(navC, animated: true, completion: nil)
         }
